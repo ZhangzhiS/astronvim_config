@@ -1,15 +1,15 @@
 local config = {
 
-  -- Configure AstroNvim updates
+  -- 配置AstroNvim更新
   updater = {
-    remote = "origin", -- remote to use
+    remote = "origin", -- 要使用的远程
     channel = "nightly", -- "stable" or "nightly"
-    version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
-    branch = "main", -- branch name (NIGHTLY ONLY)
-    commit = nil, -- commit hash (NIGHTLY ONLY)
+    version = "latest", -- 更新版本或者tag (STABLE ONLY)
+    branch = "main", -- 更新依赖分支 (NIGHTLY ONLY)
+    commit = nil, -- 更新到某个提交 (NIGHTLY ONLY)
     pin_plugins = nil, -- nil, true, false (nil will pin plugins on stable only)
-    skip_prompts = false, -- skip prompts about breaking changes
-    show_changelog = true, -- show the changelog after performing an update
+    skip_prompts = false, -- 跳过有关中断更改的提示
+    show_changelog = true, -- 执行更新后显示更改日志
     -- remotes = { -- easily add new remotes to track
     --   ["remote_name"] = "https://remote_url.come/repo.git", -- full remote url
     --   ["remote2"] = "github_user/repo", -- GitHub user/repo shortcut,
@@ -17,34 +17,34 @@ local config = {
     -- },
   },
 
-  -- Set colorscheme
+  -- 设置主题
   colorscheme = "default_theme",
 
-  -- set vim options here (vim.<first_key>.<second_key> =  value)
+  -- 在此处设置vim选项 (vim.<first_key>.<second_key> =  value)
   options = {
     opt = {
-      relativenumber = true, -- sets vim.opt.relativenumber
+      relativenumber = true, -- 设置相对行号
     },
     g = {
-      mapleader = " ", -- sets vim.g.mapleader
+      mapleader = " ", -- 设置leader键
     },
   },
 
-  -- Default theme configuration
+  -- 默认主题配置
   default_theme = {
     diagnostics_style = { italic = true },
     -- Modify the color table
     colors = {
       fg = "#abb2bf",
     },
-    -- Modify the highlight groups
+    -- 修改高亮显示
     highlights = function(highlights)
       local C = require "default_theme.colors"
 
       highlights.Normal = { fg = C.fg, bg = C.bg }
       return highlights
     end,
-    plugins = { -- enable or disable extra plugin highlighting
+    plugins = { -- 启用或禁用额外插件突出显示
       aerial = true,
       beacon = false,
       bufferline = true,
@@ -65,20 +65,20 @@ local config = {
     },
   },
 
-  -- Disable AstroNvim ui features
+  -- 禁用AstronView ui功能
   ui = {
     nui_input = true,
     telescope_select = true,
   },
 
-  -- Configure plugins
+  -- 插件配置
   plugins = {
-    -- Add plugins, the packer syntax without the "use"
+    -- 添加插件，不使用“use”的packer语法
     init = {
-      -- You can disable default plugins as follows:
+      -- 您可以如下禁用默认插件
       -- ["goolord/alpha-nvim"] = { disable = true },
 
-      -- You can also add new plugins here as well:
+      -- 您也可以在此处添加新插件
       -- { "andweeb/presence.nvim" },
       -- {
       --   "ray-x/lsp_signature.nvim",
@@ -98,20 +98,22 @@ local config = {
       },
     },
     -- All other entries override the setup() call for default plugins
+    -- 所有其他条目覆盖默认插件的 setup() 调用
     ["null-ls"] = function(config)
       local null_ls = require "null-ls"
       -- Check supported formatters and linters
+      -- 检查支持的格式化和提示
       -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
       -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
       config.sources = {
-        -- Set a formatter
+        -- 设置格式化
         null_ls.builtins.formatting.rufo,
-        -- Set a linter
+        -- 设置提示
         null_ls.builtins.diagnostics.rubocop,
       }
       -- set up null-ls's on_attach function
       config.on_attach = function(client)
-        -- NOTE: You can remove this on attach function to disable format on save
+        -- NOTE: 可以删除此部分代码，禁用保存自动格式化
         if client.resolved_capabilities.document_formatting then
           vim.api.nvim_create_autocmd("BufWritePre", {
             desc = "Auto format before save",
@@ -120,7 +122,7 @@ local config = {
           })
         end
       end
-      return config -- return final config table
+      return config -- 返回最终配置表
     end,
     treesitter = {
       ensure_installed = { "lua" },
@@ -143,9 +145,9 @@ local config = {
     },
   },
 
-  -- Modify which-key registration
+  -- 修改 which-key 注册
   ["which-key"] = {
-    -- Add bindings
+    -- 添加绑定
     register_mappings = {
       -- first key is the mode, n == normal mode
       n = {
