@@ -92,16 +92,16 @@ local config = {
       {
         "tzachar/cmp-tabnine",
         event = "BufRead",
+        require = "hrsh7th/nvim-cmp",
+        run = "./install.sh",
         config = function()
           require("cmp_tabnine").setup()
         end,
       },
     },
-    -- All other entries override the setup() call for default plugins
     -- 所有其他条目覆盖默认插件的 setup() 调用
     ["null-ls"] = function(config)
       local null_ls = require "null-ls"
-      -- Check supported formatters and linters
       -- 检查支持的格式化和提示
       -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
       -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
@@ -124,6 +124,9 @@ local config = {
       end
       return config -- 返回最终配置表
     end,
+    -- [""] = function (config)
+    --   
+    -- end
     treesitter = {
       ensure_installed = { "lua" },
     },
@@ -131,7 +134,7 @@ local config = {
       ensure_installed = { "sumneko_lua" },
     },
     packer = {
-      compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua",
+      compile_path = vim.fn.stdpath "data" .. "/packer_compiled.lua",
     },
   },
 
@@ -166,14 +169,14 @@ local config = {
   -- The value can also be set to a boolean for disabling default sources:
   -- false == disabled
   -- true == 1000
-  cmp = {
-    source_priority = {
-      nvim_lsp = 1000,
-      luasnip = 750,
-      buffer = 500,
-      path = 250,
-    },
-  },
+  -- cmp = {
+  --   source_priority = {
+  --     nvim_lsp = 1000,
+  --     luasnip = 750,
+  --     buffer = 500,
+  --     path = 250,
+  --   },
+  -- },
 
   -- Extend LSP configuration
   lsp = {
@@ -241,6 +244,12 @@ local config = {
     --   },
     -- }
   end,
+  -- header = {
+  --   'qqq'
+  -- },
+  -- footer = {
+  --   "wwww"
+  -- }
 }
 
 return config
