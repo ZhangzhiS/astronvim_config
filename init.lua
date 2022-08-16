@@ -1,22 +1,5 @@
 local config = {
 
-  -- 配置AstroNvim更新
-  updater = {
-    remote = "origin", -- 要使用的远程
-    channel = "nightly", -- "stable" or "nightly"
-    version = "latest", -- 更新版本或者tag (STABLE ONLY)
-    branch = "main", -- 更新依赖分支 (NIGHTLY ONLY)
-    commit = nil, -- 更新到某个提交 (NIGHTLY ONLY)
-    pin_plugins = nil, -- nil, true, false (nil will pin plugins on stable only)
-    skip_prompts = false, -- 跳过有关中断更改的提示
-    show_changelog = true, -- 执行更新后显示更改日志
-    -- remotes = { -- easily add new remotes to track
-    --   ["remote_name"] = "https://remote_url.come/repo.git", -- full remote url
-    --   ["remote2"] = "github_user/repo", -- GitHub user/repo shortcut,
-    --   ["remote3"] = "github_user", -- GitHub user assume AstroNvim fork
-    -- },
-  },
-
   -- 设置主题
   colorscheme = "default_theme",
 
@@ -24,6 +7,8 @@ local config = {
   options = {
     opt = {
       relativenumber = true, -- 设置相对行号
+      tabstop = 4, -- tab 宽度为4
+      autoindent = true,
     },
     g = {
       mapleader = " ", -- 设置leader键
@@ -50,9 +35,9 @@ local config = {
       bufferline = true,
       dashboard = true,
       highlighturl = true,
-      hop = false,
+      hop = true,
       indent_blankline = true,
-      lightspeed = false,
+      lightspeed = true,
       ["neo-tree"] = true,
       notify = true,
       ["nvim-tree"] = false,
@@ -87,17 +72,6 @@ local config = {
       --     require("lsp_signature").setup()
       --   end,
       -- },
-
-      -- TabNine
-      {
-        "tzachar/cmp-tabnine",
-        event = "BufRead",
-        require = "hrsh7th/nvim-cmp",
-        run = "./install.sh",
-        config = function()
-          require("cmp_tabnine").setup()
-        end,
-      },
     },
     -- 所有其他条目覆盖默认插件的 setup() 调用
     ["null-ls"] = function(config)

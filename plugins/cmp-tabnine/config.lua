@@ -1,9 +1,5 @@
-require("packer").startup(
- function(use)
- 	use "hrsh7th/nvim-cmp" --completion
- 	use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
- end
-)
+astronvim.add_user_cmp_source "cmp_tabnine"
+
 local tabnine = require('cmp_tabnine.config')
 tabnine:setup({
 	max_lines = 1000;

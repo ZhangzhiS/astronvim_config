@@ -69,7 +69,7 @@ return {
     end,
   },
   sources = {
-    { name = "nvim_lua" },
+    { name = "cmp_tabnine" },
   },
   mapping = {
     ["<C-j>"] = cmp.config.disable,
