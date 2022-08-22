@@ -27,11 +27,11 @@ return {
     {
       type = "group",
       val = {
-        utils.alpha_button("LDR f f", "  Find File  "),
-        utils.alpha_button("LDR f o", "  Recents  "),
-        utils.alpha_button("LDR f p", "P  Projects  "),
-        utils.alpha_button("LDR f n", "  New File  "),
-        utils.alpha_button("LDR S l", "  Last Session  "),
+        utils.alpha_button("LDR f f", "  查找文件  "),
+        utils.alpha_button("LDR f o", "  最近文件  "),
+        --[[ utils.alpha_button("LDR f p", "P  项目  "), ]]
+        utils.alpha_button("LDR f n", "  新建文件  "),
+        utils.alpha_button("LDR S l", "  上次回话  "),
       },
       opts = { spacing = 1 },
     },
@@ -39,7 +39,7 @@ return {
     {
       type = "text",
       val = {
-        " AstroNvim loaded " .. plugins_loaded .. " and has " .. plugins_count .. " plugins ",
+        " 编辑器加载了 " .. plugins_loaded .. " 个插件，总共有 " .. plugins_count .. " 个插件 ",
       },
       opts = { position = "center", hl = "DashboardFooter",spacing = 5 },
     },

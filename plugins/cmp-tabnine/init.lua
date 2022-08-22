@@ -1,7 +1,5 @@
 return {
-  "tzachar/cmp-tabnine",
-  --[[ event = "InsertEnter", ]]
-  after = "nvim-com",
+  after = "nvim-cmp",
   require = "hrsh7th/nvim-cmp",
   run = "./install.sh",
   config = function()
