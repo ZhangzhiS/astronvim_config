@@ -29,7 +29,6 @@ return {
       val = {
         utils.alpha_button("LDR f f", "  查找文件  "),
         utils.alpha_button("LDR f o", "  最近文件  "),
-        --[[ utils.alpha_button("LDR f p", "P  项目  "), ]]
         utils.alpha_button("LDR f n", "  新建文件  "),
         utils.alpha_button("LDR S l", "  上次回话  "),
       },

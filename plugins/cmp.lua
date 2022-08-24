@@ -35,8 +35,8 @@ local source_mapping = {
 	path = "[Path]",
 }
 
-local cmp = require "cmp"
-local luasnip = require "luasnip"
+local cmp_obj = require "cmp"
+local luasnip_obj = require "luasnip"
 
 return {
   experimental = {
@@ -72,15 +72,15 @@ return {
     { name = "cmp_tabnine" },
   },
   mapping = {
-    ["<C-j>"] = cmp.config.disable,
-    ["<C-k>"] = cmp.config.disable,
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expandable() then
-        luasnip.expand()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
+    ["<C-j>"] = cmp_obj.config.disable,
+    ["<C-k>"] = cmp_obj.config.disable,
+    ["<Tab>"] = cmp_obj.mapping(function(fallback)
+      if cmp_obj.visible() then
+        cmp_obj.select_next_item()
+      elseif luasnip_obj.expandable() then
+        luasnip_obj.expand()
+      elseif luasnip_obj.expand_or_jumpable() then
+        luasnip_obj.expand_or_jump()
       else
         fallback()
       end

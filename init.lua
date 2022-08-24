@@ -3,18 +3,6 @@ local config = {
   -- 设置主题
   colorscheme = "default_theme",
 
-  -- 在此处设置vim选项 (vim.<first_key>.<second_key> =  value)
-  options = {
-    opt = {
-      relativenumber = true, -- 设置相对行号
-      tabstop = 4, -- tab 宽度为4
-      autoindent = true,
-    },
-    g = {
-      mapleader = " ", -- 设置leader键
-    },
-  },
-
   -- 默认主题配置
   default_theme = {
     diagnostics_style = { italic = true },
@@ -58,21 +46,6 @@ local config = {
 
   -- 插件配置
   plugins = {
-    -- 添加插件，不使用“use”的packer语法
-    init = {
-      -- 您可以如下禁用默认插件
-      -- ["goolord/alpha-nvim"] = { disable = true },
-
-      -- 您也可以在此处添加新插件
-      -- { "andweeb/presence.nvim" },
-      -- {
-      --   "ray-x/lsp_signature.nvim",
-      --   event = "BufRead",
-      --   config = function()
-      --     require("lsp_signature").setup()
-      --   end,
-      -- },
-    },
     -- 所有其他条目覆盖默认插件的 setup() 调用
     ["null-ls"] = function(config)
       local null_ls = require "null-ls"
